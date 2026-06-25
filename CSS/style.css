@@ -1,0 +1,265 @@
+/* ============================================
+   VARIABLES — modifie uniquement ici
+   ============================================ */
+:root {
+
+  /* Couleurs */
+  --couleur-fond:            #FBF4E8;
+  --couleur-fond-bouton:     #FFFFFF;
+  --couleur-texte:           #2B1B17;
+  --couleur-texte-attenue:   #7A6A5F;
+  --couleur-accent:          #8C2F39;
+  --couleur-accent-doux:     #D4A24C;
+  --couleur-bordure:         #E7DCC8;
+
+  /* Polices */
+  --police-titre: "Playfair Display", Georgia, "Times New Roman", serif;
+  --police-texte: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Tailles de police — mobile (valeurs de base) */
+  --taille-titre-80-mobile:      5.5rem;
+  --taille-sous-titre-mobile:    1rem;
+  --taille-date:                 0.95rem;
+  --taille-numero:               0.85rem;
+  --taille-nom-mobile:           1.15rem;
+  --taille-description:          0.9rem;
+  --taille-action:                0.85rem;
+  --taille-pied-de-page:          0.9rem;
+  --taille-accessibilite-titre:   1rem;
+  --taille-accessibilite-texte:   0.85rem;
+
+  /* Tailles de police — desktop */
+  --taille-titre-80-desktop:     9rem;
+  --taille-sous-titre-desktop:   1.15rem;
+  --taille-nom-desktop:           1.4rem;
+
+  /* Espacements */
+  --espace-section:   4.5rem;
+  --rayon-bouton:      4px;
+}
+
+/* ============================================
+   RESET DE BASE
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: var(--police-texte);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================
+   ENTETE — MOBILE D'ABORD
+   ============================================ */
+.entete {
+  text-align: center;
+  padding: 2.5rem 1.25rem 2rem;
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.date {
+  font-family: var(--police-texte);
+  font-size: var(--taille-date);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.titre-80 {
+  font-family: var(--police-titre);
+  font-size: var(--taille-titre-80-mobile);
+  font-weight: 700;
+  color: var(--couleur-texte);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.sous-titre {
+  font-family: var(--police-texte);
+  font-size: var(--taille-sous-titre-mobile);
+  color: var(--couleur-texte-attenue);
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+/* ============================================
+   LISTE DES BOUTONS — MOBILE D'ABORD
+   ============================================ */
+.liste-boutons {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.bouton {
+  background-color: var(--couleur-fond-bouton);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-bouton);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 64px;
+  transition: border-color 0.2s ease;
+}
+
+.bouton:active {
+  border-color: var(--couleur-accent-doux);
+  background-color: var(--couleur-fond);
+}
+
+.bouton:focus-visible {
+  outline: 2px solid var(--couleur-accent);
+  outline-offset: 3px;
+}
+
+.bouton-frise,
+.bouton-arbre,
+.bouton-affiche,
+.bouton-programme,
+.bouton-menu {
+  /* libre pour personnalisation future */
+}
+
+.numero {
+  font-family: var(--police-texte);
+  font-size: var(--taille-numero);
+  letter-spacing: 0.1em;
+  color: var(--couleur-accent-doux);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.texte {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nom {
+  font-family: var(--police-titre);
+  font-size: var(--taille-nom-mobile);
+  font-weight: 700;
+  color: var(--couleur-texte);
+}
+
+.description {
+  font-family: var(--police-texte);
+  font-size: var(--taille-description);
+  color: var(--couleur-texte-attenue);
+}
+
+.action {
+  font-family: var(--police-texte);
+  font-size: var(--taille-action);
+  color: var(--couleur-accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ============================================
+   ACCESSIBILITE & CONFIDENTIALITE
+   (non stylé pour le moment — sur demande)
+   ============================================ */
+.accessibilite {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+}
+
+.accessibilite-titre {
+  font-size: var(--taille-accessibilite-titre);
+}
+
+.accessibilite-bloc {
+  font-size: var(--taille-accessibilite-texte);
+}
+
+/* ============================================
+   PIED DE PAGE
+   ============================================ */
+.pied-de-page {
+  text-align: center;
+  padding: 2rem 1.25rem 2.5rem;
+  font-size: var(--taille-pied-de-page);
+  color: var(--couleur-texte-attenue);
+  border-top: 1px solid var(--couleur-bordure);
+}
+
+/* ============================================
+   TABLETTE / DESKTOP
+   ============================================ */
+@media (min-width: 600px) {
+
+  .entete {
+    padding: var(--espace-section) 1.5rem 3rem;
+  }
+
+  .titre-80 {
+    font-size: var(--taille-titre-80-desktop);
+  }
+
+  .sous-titre {
+    font-size: var(--taille-sous-titre-desktop);
+  }
+
+  .liste-boutons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .bouton {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem 1.5rem;
+    gap: 0.4rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .bouton:hover {
+    border-color: var(--couleur-accent-doux);
+    transform: translateY(-3px);
+  }
+
+  .nom {
+    font-size: var(--taille-nom-desktop);
+  }
+
+  .action {
+    margin-top: 0.5rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITÉ — réduction des animations
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .bouton {
+    transition: none;
+  }
+}
