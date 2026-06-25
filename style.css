@@ -5,38 +5,38 @@
 :root {
 
   /* Couleurs */
-  --couleur-fond:            #FBF4E8;
-  --couleur-fond-bouton:     #FFFFFF;
-  --couleur-texte:           #2B1B17;
-  --couleur-texte-attenue:   #7A6A5F;
-  --couleur-accent:          #8C2F39;
-  --couleur-accent-doux:     #D4A24C;
-  --couleur-bordure:         #E7DCC8;
+  --couleur-fond: #FBF4E8;
+  --couleur-fond-bouton: #FFFFFF;
+  --couleur-texte: #2B1B17;
+  --couleur-texte-attenue: #7A6A5F;
+  --couleur-accent: #8C2F39;
+  --couleur-accent-doux: #D4A24C;
+  --couleur-bordure: #E7DCC8;
 
   /* Polices */
   --police-titre: "Playfair Display", Georgia, "Times New Roman", serif;
   --police-texte: "Inter", "Helvetica Neue", Arial, sans-serif;
 
   /* Tailles de police — mobile (valeurs de base) */
-  --taille-titre-80-mobile:      5.5rem;
-  --taille-sous-titre-mobile:    1rem;
-  --taille-date:                 0.95rem;
-  --taille-numero:               0.85rem;
-  --taille-nom-mobile:           1.15rem;
-  --taille-description:          0.9rem;
-  --taille-action:                0.85rem;
-  --taille-pied-de-page:          0.9rem;
-  --taille-accessibilite-titre:   1rem;
-  --taille-accessibilite-texte:   0.85rem;
+  --taille-titre-80-mobile: 5.5rem;
+  --taille-sous-titre-mobile: 1rem;
+  --taille-date: 0.95rem;
+  --taille-numero: 0.85rem;
+  --taille-nom-mobile: 1.15rem;
+  --taille-description: 0.9rem;
+  --taille-action: 0.85rem;
+  --taille-pied-de-page: 0.9rem;
+  --taille-accessibilite-titre: 1rem;
+  --taille-accessibilite-texte: 0.85rem;
 
   /* Tailles de police — desktop */
-  --taille-titre-80-desktop:     9rem;
-  --taille-sous-titre-desktop:   1.15rem;
-  --taille-nom-desktop:           1.4rem;
+  --taille-titre-80-desktop: 9rem;
+  --taille-sous-titre-desktop: 1.15rem;
+  --taille-nom-desktop: 1.4rem;
 
   /* Espacements */
-  --espace-section:   4.5rem;
-  --rayon-bouton:      4px;
+  --espace-section: 4.5rem;
+  --rayon-bouton: 4px;
 }
 
 /* ============================================
@@ -133,6 +133,14 @@ a {
 .bouton:focus-visible {
   outline: 2px solid var(--couleur-accent);
   outline-offset: 3px;
+}
+
+.bouton img {
+  width: 100%;
+  max-width: 100%; /* en px au début */
+  /* ajuste selon le rendu souhaité */
+  height: auto;
+  border-radius: 2px;
 }
 
 .bouton-frise,
@@ -247,12 +255,6 @@ a {
     transform: translateY(-3px);
   }
 
-  .bouton img {
-  width: 100%;
-  max-width: 120px;  /* ajuste selon le rendu souhaité */
-  height: auto;
-  border-radius: 2px;
-}
 
   .nom {
     font-size: var(--taille-nom-desktop);
