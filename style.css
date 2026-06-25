@@ -247,6 +247,13 @@ a {
     transform: translateY(-3px);
   }
 
+  .bouton img {
+  width: 100%;
+  max-width: 120px;  /* ajuste selon le rendu souhaité */
+  height: auto;
+  border-radius: 2px;
+}
+
   .nom {
     font-size: var(--taille-nom-desktop);
   }
