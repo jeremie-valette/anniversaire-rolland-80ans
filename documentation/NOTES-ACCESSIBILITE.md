@@ -1,3 +1,4 @@
+<!-- Travail de collaboration ClaudeIA / ratel.core -->
 # Notes — Accessibilité, RGAA, RGPD
 
 Journal de décisions techniques pour la page Master du projet
