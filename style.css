@@ -13,34 +13,38 @@
   --couleur-accent:          #8C2F39;
   --couleur-accent-doux:     #D4A24C;
   --couleur-bordure:         #E7DCC8;
+  --couleur-pellicule:       #000000;
 
   /* Polices */
   --police-titre: "Playfair Display", Georgia, "Times New Roman", serif;
   --police-texte: "Inter", "Helvetica Neue", Arial, sans-serif;
 
-  /* Tailles de police — mobile (valeurs de base) */
-  --taille-titre-80-mobile:      5.5rem;
-  --taille-sous-titre-mobile:    1rem;
-  --taille-date:                 0.95rem;
-  --taille-nom-mobile:           1.15rem;
+  /* Tailles de police — mobile */
+  --taille-titre-80-mobile:      4.5rem;
+  --taille-sous-titre-mobile:    0.95rem;
+  --taille-date:                 0.85rem;
+  --taille-nom-mobile:           1.3rem;
   --taille-description:          0.9rem;
-  --taille-action:                0.85rem;
   --taille-pied-de-page:          0.9rem;
   --taille-accessibilite-titre:   1rem;
   --taille-accessibilite-texte:   0.85rem;
 
   /* Tailles de police — desktop */
-  --taille-titre-80-desktop:     9rem;
-  --taille-sous-titre-desktop:   1.15rem;
-  --taille-nom-desktop:           1.4rem;
+  --taille-titre-80-desktop:     8rem;
+  --taille-sous-titre-desktop:   1.1rem;
+  --taille-nom-desktop:           1.6rem;
 
-  /* Image dans le bouton */
-  --taille-image-bouton-mobile:   56px;
-  --taille-image-bouton-desktop:  80px;
+  /* Hauteur des cartes — coeur de la disposition verticale */
+  --hauteur-carte:   75dvh;
+  --espace-cartes:    1rem;
+
+  /* Pellicule (frise) */
+  --taille-perforation:        14px;
+  --espacement-perforation:    18px;
 
   /* Espacements */
-  --espace-section:   4.5rem;
-  --rayon-bouton:      4px;
+  --espace-section:   3rem;
+  --rayon-bouton:      6px;
 }
 
 /* ============================================
@@ -75,70 +79,69 @@ img {
 }
 
 /* ============================================
-   ENTETE — MOBILE D'ABORD
+   ENTETE
    ============================================ */
 .entete {
   text-align: center;
-  padding: 2.5rem 1.25rem 2rem;
+  padding: 2rem 1.25rem 1.5rem;
   border-bottom: 1px solid var(--couleur-bordure);
 }
 
 .date {
-  font-family: var(--police-texte);
   font-size: var(--taille-date);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--couleur-accent);
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .titre-80 {
   font-family: var(--police-titre);
   font-size: var(--taille-titre-80-mobile);
   font-weight: 700;
-  color: var(--couleur-texte);
   line-height: 0.9;
   letter-spacing: -0.02em;
 }
 
 .sous-titre {
-  font-family: var(--police-texte);
   font-size: var(--taille-sous-titre-mobile);
   color: var(--couleur-texte-attenue);
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   font-style: italic;
 }
 
 /* ============================================
-   LISTE DES BOUTONS — MOBILE D'ABORD
-   Disposition flexbox horizontale :
-   image | texte (nom + description) | action
+   LISTE DES BOUTONS — disposition verticale
+   Chaque carte : nom + description en haut,
+   puis l'image en grand qui remplit le reste.
+   Hauteur fixée pour qu'on aperçoive la carte
+   suivante en bas de l'écran (impression
+   d'abondance, peu de scroll).
    ============================================ */
 .liste-boutons {
-  max-width: 920px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 2rem 1.25rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: var(--espace-cartes);
 }
 
 .bouton {
+  height: var(--hauteur-carte);
   background-color: var(--couleur-fond-bouton);
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon-bouton);
-  padding: 0.85rem 1.1rem;
+  padding: 1.1rem;
   display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  min-height: 64px;
+  flex-direction: column;
+  gap: 0.4rem;
   transition: border-color 0.2s ease;
 }
 
 .bouton:active {
   border-color: var(--couleur-accent-doux);
-  background-color: var(--couleur-fond);
 }
 
 .bouton:focus-visible {
@@ -154,61 +157,91 @@ img {
   /* libre pour personnalisation future */
 }
 
-/* L'image est le premier enfant flex du bouton :
-   taille fixe, ne s'écrase pas, ne déborde pas */
-.bouton img {
-  width: var(--taille-image-bouton-mobile);
-  height: var(--taille-image-bouton-mobile);
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.texte {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0; /* évite que le texte long ne pousse l'image/action hors cadre */
-}
-
 .nom {
   font-family: var(--police-titre);
   font-size: var(--taille-nom-mobile);
   font-weight: 700;
-  color: var(--couleur-texte);
 }
 
 .description {
-  font-family: var(--police-texte);
   font-size: var(--taille-description);
   color: var(--couleur-texte-attenue);
 }
 
-.action {
-  font-family: var(--police-texte);
-  font-size: var(--taille-action);
-  color: var(--couleur-accent);
-  font-weight: 600;
-  flex-shrink: 0;
-  white-space: nowrap;
+/* Le cadre de l'image occupe tout l'espace restant
+   sous le texte, l'image se recadre à l'intérieur */
+.cadre-image {
+  flex: 1;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+
+.cadre-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cas particulier : la frise est une image panoramique.
+   "contain" évite le rognage, fond noir façon pellicule
+   pour combler l'espace vide au lieu d'un blanc cru. */
+.cadre-image-frise {
+  background-color: var(--couleur-pellicule);
+}
+
+.cadre-image-frise img {
+  object-fit: contain;
+}
+
+.cadre-image-frise::before,
+.cadre-image-frise::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--taille-perforation);
+  background-image: radial-gradient(circle, var(--couleur-fond) 3px, transparent 3px);
+  background-size: var(--espacement-perforation) 100%;
+  background-repeat: repeat-x;
+  z-index: 1;
+}
+
+.cadre-image-frise::before {
+  top: 0;
+}
+
+.cadre-image-frise::after {
+  bottom: 0;
 }
 
 /* ============================================
    ACCESSIBILITE & CONFIDENTIALITE
    ============================================ */
 .accessibilite {
-  max-width: 920px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 1.25rem 2rem;
+  padding: 0 1.25rem 1.5rem;
 }
 
 .accessibilite-titre {
   font-size: var(--taille-accessibilite-titre);
+  margin-bottom: 0.5rem;
 }
 
 .accessibilite-bloc {
   font-size: var(--taille-accessibilite-texte);
+  margin-bottom: 0.4rem;
+}
+
+.accessibilite-norme {
+  font-weight: 600;
+  color: var(--couleur-texte);
+}
+
+.accessibilite-detail {
+  color: var(--couleur-texte-attenue);
 }
 
 /* ============================================
@@ -216,20 +249,19 @@ img {
    ============================================ */
 .pied-de-page {
   text-align: center;
-  padding: 2rem 1.25rem 2.5rem;
+  padding: 1.5rem 1.25rem 2rem;
   font-size: var(--taille-pied-de-page);
   color: var(--couleur-texte-attenue);
   border-top: 1px solid var(--couleur-bordure);
 }
 
 /* ============================================
-   TABLETTE / DESKTOP — on agrandit progressivement
-   à partir d'ici (logique mobile-first)
+   TABLETTE / DESKTOP
    ============================================ */
 @media (min-width: 600px) {
 
   .entete {
-    padding: var(--espace-section) 1.5rem 3rem;
+    padding: var(--espace-section) 1.5rem 2rem;
   }
 
   .titre-80 {
@@ -241,16 +273,11 @@ img {
   }
 
   .liste-boutons {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .bouton {
-    padding: 1.1rem 1.5rem;
-  }
-
-  .bouton img {
-    width: var(--taille-image-bouton-desktop);
-    height: var(--taille-image-bouton-desktop);
+    height: 60dvh; /* un peu moins haut sur grand écran, moins de scroll vertical pertinent */
   }
 
   .bouton:hover {
